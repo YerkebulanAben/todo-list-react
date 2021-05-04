@@ -3,6 +3,7 @@ import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import StatusFilter from '../status-filters';
 import TodoList from '../todo-list';
+import TodoAddForm from '../todo-add-form';
 import './app.css';
 
 export default class App extends Component {
@@ -20,6 +21,7 @@ export default class App extends Component {
         <SearchPanel />
         <StatusFilter />
         <TodoList />
+        <TodoAddForm />
       </div>
     );
   }
