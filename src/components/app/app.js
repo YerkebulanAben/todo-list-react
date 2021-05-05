@@ -22,6 +22,8 @@ export default class App extends Component {
     const newTask = {
         id: todos[todos.length - 1].id + 1,
         text: task,
+        done: false,
+        important: false,
       },
       newTasks = [...todos, newTask];
     return {
@@ -44,6 +46,48 @@ export default class App extends Component {
     });
   }
 
+  onDoneToggle = (id) => {
+    this.setState(({todos}) => {
+      const idx = todos.findIndex((el) => el.id === id),
+        newTask = {
+          id: todos[idx].id,
+          text: todos[idx].text,
+          done: !todos[idx].done,
+          important: todos[idx].important,
+      };
+      // console.log(newTask)
+      // console.log(todos[idx])
+      return {
+        todos: [
+          ...todos.slice(0,idx),
+          newTask,
+          ...todos.slice(idx + 1)
+        ]
+      }
+    });
+  }
+
+  onImportantToggle = (id) => {
+    this.setState(({todos}) => {
+      const idx = todos.findIndex((el) => el.id === id),
+        newTask = {
+          id: todos[idx].id,
+          text: todos[idx].text,
+          done: todos[idx].done,
+          important: !todos[idx].important,
+      };
+      // console.log(newTask)
+      // console.log(todos[idx])
+      return {
+        todos: [
+          ...todos.slice(0,idx),
+          newTask,
+          ...todos.slice(idx + 1)
+        ]
+      }
+    });
+  }
+
   render() {
     return(
       <div>
@@ -52,7 +96,9 @@ export default class App extends Component {
         <StatusFilter />
         <TodoList 
           todos = { this.state.todos }
-          onDelete = { this.deleteTask }/>
+          onDelete = { this.deleteTask }
+          onDoneToggle = { this.onDoneToggle }
+          onImportantToggle = { this.onImportantToggle }/>
         <TodoAddForm addNewTask = { this.addNewTask }/>
       </div>
     );
