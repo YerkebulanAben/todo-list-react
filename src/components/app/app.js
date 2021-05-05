@@ -17,6 +17,20 @@ export default class App extends Component {
     ]
   };
 
+  addNewTask = (task) => {
+    this.setState(({todos}) => {
+    const newTask = {
+        id: todos[todos.length - 1].id + 1,
+        text: task,
+      },
+      newTasks = [...todos, newTask];
+    return {
+      todos: newTasks,
+    }
+    })
+
+  }
+
   render() {
     return(
       <div>
@@ -24,7 +38,7 @@ export default class App extends Component {
         <SearchPanel />
         <StatusFilter />
         <TodoList todos = { this.state.todos }/>
-        <TodoAddForm />
+        <TodoAddForm addNewTask = { this.addNewTask }/>
       </div>
     );
   }
