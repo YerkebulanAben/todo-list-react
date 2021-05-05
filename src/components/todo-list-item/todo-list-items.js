@@ -1,13 +1,14 @@
 import React from 'react';
 import './todo-list-item.css';
 
-const TodoListItem = ({text}) => {
+const TodoListItem = ({text, onDelete}) => {
   return(
     <div>
       <span>{ text }</span>
       <button>Done</button>
       <button>Important</button>
-      <button>Delete</button>
+      <button
+        onClick = {onDelete}>Delete</button>
     </div>
   );
 }

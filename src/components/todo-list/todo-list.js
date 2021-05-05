@@ -2,12 +2,14 @@ import React from 'react';
 import TodoListItem from '../todo-list-item';
 import './todo-list.css';
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, onDelete }) => {
   
   const list = todos.map(item => {
     return (
       <li key = { item.id }>
-        <TodoListItem text = { item.text } />
+        <TodoListItem 
+          text = { item.text } 
+          onDelete = {() => onDelete(item.id)}/>
       </li>
     )
   })
