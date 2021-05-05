@@ -11,6 +11,9 @@ export default class App extends Component {
     todos: [
       { id: 1, text: "Learn React"},
       { id: 2, text: "Make React App"},
+      { id: 3, text: "Learn Laravel"},
+      { id: 4, text: "Create SPA "},
+      
     ]
   };
 
@@ -20,7 +23,7 @@ export default class App extends Component {
         <AppHeader />
         <SearchPanel />
         <StatusFilter />
-        <TodoList />
+        <TodoList todos = { this.state.todos }/>
         <TodoAddForm />
       </div>
     );
