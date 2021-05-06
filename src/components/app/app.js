@@ -13,8 +13,8 @@ export default class App extends Component {
       { id: 2, text: "Make React App", done: false, important: false},
       { id: 3, text: "Learn Laravel", done: false, important: false},
       { id: 4, text: "Create SPA ", done: false, important: false},
-      
-    ]
+    ],
+    filter: 'all',
   };
 
   addNewTask = (task) => {
@@ -88,14 +88,35 @@ export default class App extends Component {
     });
   }
 
+  filter = (items, filter) => {
+    switch(filter){
+      case 'all':
+        return items;
+      case 'done':
+        return items.filter(item => item.done);
+      case 'important':
+        return items.filter(item => item.important);
+      default:
+        return items;
+    }
+  }
+
+  onFilterChange = (filter) => {
+    this.setState({
+      filter,
+    })
+  }
+
   render() {
+    const todos = this.filter(this.state.todos, this.state.filter);
     return(
       <div>
         <AppHeader />
         <SearchPanel />
-        <StatusFilter />
+        <StatusFilter 
+          onFilterChange = { this.onFilterChange }/>
         <TodoList 
-          todos = { this.state.todos }
+          todos = { todos }
           onDelete = { this.deleteTask }
           onDoneToggle = { this.onDoneToggle }
           onImportantToggle = { this.onImportantToggle }/>

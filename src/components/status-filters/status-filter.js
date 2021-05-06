@@ -1,12 +1,12 @@
 import React from 'react';
 import './status-filter.css';
 
-const StatusFilter = () => {
+const StatusFilter = ({onFilterChange}) => {
   return(
     <div>
-      <button>Completed</button>
-      <button>Important</button>
-      <button>Done</button>
+      <button onClick = {() => onFilterChange('all')}>All</button>
+      <button onClick = {() => onFilterChange('important')}>Important</button>
+      <button onClick = {() => onFilterChange('done')}>Done</button>
     </div>
   );
 }
