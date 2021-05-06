@@ -95,8 +95,8 @@ export default class App extends Component {
         return items;
       case 'done':
         return items.filter(item => item.done);
-      case 'important':
-        return items.filter(item => item.important);
+      case 'active':
+        return items.filter(item => !item.done);
       default:
         return items;
     }
@@ -132,14 +132,16 @@ export default class App extends Component {
       todosCount = this.todosCount() - donesCount,
       todos = this.search(tasks, this.state.term);
     return(
-      <div>
+      <div className = "app">
         <AppHeader 
           todosCount = { todosCount }
           donesCount = { donesCount }/>
-        <SearchPanel 
-          onSearchChange = { this.onSearchChange }/>
-        <StatusFilter 
-          onFilterChange = { this.onFilterChange }/>
+        <div className="top-panel">
+          <SearchPanel 
+            onSearchChange = { this.onSearchChange }/>
+          <StatusFilter 
+            onFilterChange = { this.onFilterChange }/>
+        </div>
         <TodoList 
           todos = { todos }
           onDelete = { this.deleteTask }

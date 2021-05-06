@@ -1,0 +1,23 @@
+.app .top-panel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.app .top-panel .search-panel {
+    flex-grow: 1;
+    margin-right: 3px;
+    width: auto;
+    height: 36px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ced4da
+}
+
+.app .top-panel .search-panel:focus{
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}

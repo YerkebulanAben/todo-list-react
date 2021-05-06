@@ -2,6 +2,85 @@
     text-decoration: line-through;
 }
 .important{
-    color: red;
-    font-weight: 900;
+    color:steelblue;
+    font-weight: 600;
+}
+
+.app .todo-list li {
+    font-size: 25px;
+    padding: 5px 0 5px 25px;
+    border: 1px solid #ced4da;
+    border-bottom-width: 0;
+    font-weight: 400;
+}
+
+.app .todo-list li:last-child{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-width: 1px;
+}
+
+.app .todo-list li:first-child{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.app .todo-list li .btn {
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.app .todo-list li .btn-done{
+    border: 1px solid rgb(39, 194, 39)
+}
+
+.app .todo-list li .btn-mark{
+    border: 1px solid steelblue
+}
+
+.app .todo-list li .btn-delete{
+    border: 1px solid rgb(240, 62, 62)
+}
+
+.fa-check{
+    color: rgb(39, 194, 39)
+}
+.fa-exclamation{
+    color: steelblue
+}
+
+.fa-trash {
+    color: rgb(240, 62, 62)
+}
+
+.app .todo-list li .btn-done:hover{
+    background-color: rgb(39, 194, 39);
+    cursor: pointer
+}
+
+.app .todo-list li .btn-done:hover .fa-check{
+    color: white
+}
+
+.app .todo-list li .btn-mark:hover{
+    background-color: steelblue;
+    cursor: pointer
+}
+
+.app .todo-list li .btn-mark:hover .fa-exclamation{
+    color: white
+}
+
+.app .todo-list li .btn-delete:hover{
+    background-color: rgb(240, 62, 62);
+    cursor: pointer
+}
+
+.app .todo-list li .btn-delete:hover .fa-trash{
+    color: white
 }

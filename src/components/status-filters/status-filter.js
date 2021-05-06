@@ -3,10 +3,19 @@ import './status-filter.css';
 
 const StatusFilter = ({onFilterChange}) => {
   return(
-    <div>
-      <button onClick = {() => onFilterChange('all')}>All</button>
-      <button onClick = {() => onFilterChange('important')}>Important</button>
-      <button onClick = {() => onFilterChange('done')}>Done</button>
+    <div className="status-filter">
+      <button className="all-tasks active-filter" 
+        onClick = {() => onFilterChange('all')}>
+          All
+      </button>
+      <button className="active-tasks" 
+        onClick = {() => onFilterChange('active')}>
+          Active
+      </button>
+      <button className="done-tasks" 
+        onClick = {() => onFilterChange('done')}>
+          Done
+      </button>
     </div>
   );
 }

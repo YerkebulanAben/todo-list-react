@@ -1,0 +1,60 @@
+.app .top-panel .status-filter{
+    height: 30px;
+    display: flex;
+    align-content: center;
+    height: 40px;
+}
+
+.app .top-panel .status-filter .all-tasks {
+    border-radius: 0px;
+    border: 1px solid #ced4da;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.app .top-panel .status-filter .all-tasks:hover {
+    cursor: pointer;
+    background-color: #718e91;
+}
+    
+.app .top-panel .status-filter .active-tasks {
+    border-radius: 0px;
+    border: 1px solid #ced4da;
+    background-color: white;
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.app .top-panel .status-filter .active-tasks:hover {
+    cursor: pointer;
+    background-color: #718e91;
+    color: white
+}
+
+.app .top-panel .status-filter .done-tasks {
+    border-radius: 0px;
+    border: 1px solid #ced4da;
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.app .top-panel .status-filter .done-tasks:hover {
+    cursor: pointer;
+    background-color: #718e91;
+    color: white
+}
+
+.app .top-panel .status-filter .active-filter {
+    background-color: #72d4e0;
+    color: white
+}
+
+.app .top-panel .status-filter .active-filter:hover {
+    background-color: #359caa;
+}

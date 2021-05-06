@@ -15,11 +15,20 @@ const TodoListItem = ({text, onDelete, onDoneToggle, done, important, onImportan
       <span
         className = { className }>{ text }</span>
       <button
-        onClick = { onDoneToggle }>Done</button>
+        className="btn btn-delete"
+        onClick = {onDelete}>
+        < i className="fas fa-trash" />
+      </button>
       <button
-        onClick = { onImportantToggle }>Important</button>
+        className="btn btn-mark"
+        onClick = { onImportantToggle }>
+        < i className="fas fa-exclamation"/>
+      </button>
       <button
-        onClick = {onDelete}>Delete</button>
+        className="btn btn-done"
+        onClick = { onDoneToggle }>
+          <i className="fas fa-check"/>
+      </button>
     </div>
   );
 }

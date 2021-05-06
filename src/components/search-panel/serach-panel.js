@@ -10,7 +10,7 @@ export default class SearchPanel extends Component {
 
   render(){
     return (
-      <input 
+      <input className="search-panel"
         onChange = {this.onSearchChange}
         type="text" placeholder="Search task"/>
     );

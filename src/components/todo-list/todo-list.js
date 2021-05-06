@@ -19,7 +19,7 @@ const TodoList = ({ todos, onDelete, onDoneToggle, onImportantToggle }) => {
   })
 
   return(
-    <ul>
+    <ul className="todo-list">
       { list }
     </ul>
   );

@@ -23,8 +23,10 @@ export default class TodoAddForm extends Component {
 
   render(){
     return (
-      <form onSubmit = { this.addNewTask }>
-        <input type="text" 
+      <form 
+        className = "todo-add-form" 
+        onSubmit = { this.addNewTask }>
+        <input type="text"
           placeholder="Insert your task"
           onChange = { this.onFormChange }
           value = { this.state.task }
