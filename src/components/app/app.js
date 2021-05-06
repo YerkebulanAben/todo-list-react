@@ -107,11 +107,23 @@ export default class App extends Component {
     })
   }
 
+  todosCount = () => {
+    return this.state.todos.length;
+  }
+
+  donesCount = () => {
+    return this.state.todos.filter(item => item.done).length;
+  }
+
   render() {
-    const todos = this.filter(this.state.todos, this.state.filter);
+    const todos = this.filter(this.state.todos, this.state.filter),
+      donesCount = this.donesCount(),
+      todosCount = this.todosCount() - donesCount;
     return(
       <div>
-        <AppHeader />
+        <AppHeader 
+          todosCount = { todosCount }
+          donesCount = { donesCount }/>
         <SearchPanel />
         <StatusFilter 
           onFilterChange = { this.onFilterChange }/>
