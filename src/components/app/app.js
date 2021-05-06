@@ -15,6 +15,7 @@ export default class App extends Component {
       { id: 4, text: "Create SPA ", done: false, important: false},
     ],
     filter: 'all',
+    term: '',
   };
 
   addNewTask = (task) => {
@@ -115,16 +116,28 @@ export default class App extends Component {
     return this.state.todos.filter(item => item.done).length;
   }
 
+  onSearchChange = (term) => {
+    this.setState({
+      term,
+    });
+  }
+
+  search = (items, term) => {
+    return items.filter(item => item.text.toLowerCase().includes(term.toLowerCase()))
+  }
+
   render() {
-    const todos = this.filter(this.state.todos, this.state.filter),
+    const tasks = this.filter(this.state.todos, this.state.filter),
       donesCount = this.donesCount(),
-      todosCount = this.todosCount() - donesCount;
+      todosCount = this.todosCount() - donesCount,
+      todos = this.search(tasks, this.state.term);
     return(
       <div>
         <AppHeader 
           todosCount = { todosCount }
           donesCount = { donesCount }/>
-        <SearchPanel />
+        <SearchPanel 
+          onSearchChange = { this.onSearchChange }/>
         <StatusFilter 
           onFilterChange = { this.onFilterChange }/>
         <TodoList 
