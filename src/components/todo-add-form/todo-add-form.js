@@ -4,7 +4,7 @@ import './todo-add-form.css';
 export default class TodoAddForm extends Component {
   
   state = {
-    task: ''
+    task: '',
   }
 
   onFormChange = (e) => {

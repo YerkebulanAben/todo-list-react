@@ -4,6 +4,8 @@ import SearchPanel from '../search-panel';
 import StatusFilter from '../status-filters';
 import TodoList from '../todo-list';
 import TodoAddForm from '../todo-add-form';
+import ErrorBoundary from '../error-boundary';
+import ErrorButton from '../error-button';
 import './app.css';
 
 export default class App extends Component {
@@ -124,24 +126,27 @@ export default class App extends Component {
       todosCount = this.todosCount() - donesCount,
       todos = this.search(tasks, this.state.term);
     return(
-      <div className = "app">
-        <AppHeader 
-          todosCount = { todosCount }
-          donesCount = { donesCount }/>
-        <div className="top-panel">
-          <SearchPanel 
-            onSearchChange = { this.onSearchChange }/>
-          <StatusFilter 
-            onFilterChange = { this.onFilterChange }
-            filter = { this.state.filter }/>
+      <ErrorBoundary>
+        <div className = "app">
+          <AppHeader 
+            todosCount = { todosCount }
+            donesCount = { donesCount }/>
+          <div className="top-panel">
+            <SearchPanel 
+              onSearchChange = { this.onSearchChange }/>
+            <StatusFilter 
+              onFilterChange = { this.onFilterChange }
+              filter = { this.state.filter }/>
+          </div>
+          <TodoList 
+            todos = { todos }
+            onDelete = { this.deleteTask }
+            onDoneToggle = { this.onDoneToggle }
+            onImportantToggle = { this.onImportantToggle }/>
+          <TodoAddForm addNewTask = { this.addNewTask }/>
+          <ErrorButton />
         </div>
-        <TodoList 
-          todos = { todos }
-          onDelete = { this.deleteTask }
-          onDoneToggle = { this.onDoneToggle }
-          onImportantToggle = { this.onImportantToggle }/>
-        <TodoAddForm addNewTask = { this.addNewTask }/>
-      </div>
+      </ErrorBoundary>
     );
   }
 }
