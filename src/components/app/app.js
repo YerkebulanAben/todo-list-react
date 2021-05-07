@@ -12,27 +12,31 @@ export default class App extends Component {
   
   state = {
     todos: [
-      { id: 1, text: "Learn React", done: false, important: false},
-      { id: 2, text: "Make React App", done: false, important: false},
-      { id: 3, text: "Learn Laravel", done: false, important: false},
-      { id: 4, text: "Create SPA ", done: false, important: false},
+      this.createNewTask('Learn React'),
+      this.createNewTask('Create React App'),
+      this.createNewTask('Learn Laravel'),
+      this.createNewTask('Create SPA'),
     ],
     filter: 'All',
     term: '',
   };
 
+  createNewTask(task, done = false, important = false){
+    return {
+      id: this.taskId++,
+      text: task,
+      done,
+      important,
+    }
+  }
+
   addNewTask = (task) => {
     this.setState(({todos}) => {
-    const newTask = {
-        id: this.taskId++,
-        text: task,
-        done: false,
-        important: false,
-      },
-      newTasks = [...todos, newTask];
-    return {
-      todos: newTasks,
-    }
+      const newTask = this.createNewTask(task),
+        newTasks = [...todos, newTask];
+      return {
+        todos: newTasks,
+      }
     })
 
   }
