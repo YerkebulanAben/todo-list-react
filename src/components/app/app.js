@@ -38,7 +38,6 @@ export default class App extends Component {
         todos: newTasks,
       }
     })
-
   }
 
   deleteTask = (id) => {
@@ -54,40 +53,30 @@ export default class App extends Component {
     });
   }
 
-  onDoneToggle = (id) => {
-    this.setState(({todos}) => {
-      const idx = todos.findIndex((el) => el.id === id),
-        newTask = {
-          id: todos[idx].id,
-          text: todos[idx].text,
-          done: !todos[idx].done,
-          important: todos[idx].important,
+  toggleItemProperty(items, id, propName){
+    const idx = items.findIndex((el) => el.id === id),
+      newTask = {
+        ...items[idx], [propName]: !items[idx][propName]
       };
-      return {
-        todos: [
-          ...todos.slice(0,idx),
-          newTask,
-          ...todos.slice(idx + 1)
-        ]
-      }
-    });
+    return [
+        ...items.slice(0,idx),
+        newTask,
+        ...items.slice(idx + 1)
+    ]
+  }
+
+  onDoneToggle = (id) => {
+   this.setState(({todos}) => {
+    return {
+      todos: this.toggleItemProperty(todos, id, 'done'),
+    }
+   });
   }
 
   onImportantToggle = (id) => {
     this.setState(({todos}) => {
-      const idx = todos.findIndex((el) => el.id === id),
-        newTask = {
-          id: todos[idx].id,
-          text: todos[idx].text,
-          done: todos[idx].done,
-          important: !todos[idx].important,
-      };
       return {
-        todos: [
-          ...todos.slice(0,idx),
-          newTask,
-          ...todos.slice(idx + 1)
-        ]
+        todos: this.toggleItemProperty(todos, id, 'important'),
       }
     });
   }
