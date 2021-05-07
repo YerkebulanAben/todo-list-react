@@ -14,7 +14,7 @@ export default class App extends Component {
       { id: 3, text: "Learn Laravel", done: false, important: false},
       { id: 4, text: "Create SPA ", done: false, important: false},
     ],
-    filter: 'all',
+    filter: 'All',
     term: '',
   };
 
@@ -56,8 +56,6 @@ export default class App extends Component {
           done: !todos[idx].done,
           important: todos[idx].important,
       };
-      // console.log(newTask)
-      // console.log(todos[idx])
       return {
         todos: [
           ...todos.slice(0,idx),
@@ -77,8 +75,6 @@ export default class App extends Component {
           done: todos[idx].done,
           important: !todos[idx].important,
       };
-      // console.log(newTask)
-      // console.log(todos[idx])
       return {
         todos: [
           ...todos.slice(0,idx),
@@ -91,11 +87,11 @@ export default class App extends Component {
 
   filter = (items, filter) => {
     switch(filter){
-      case 'all':
+      case 'All':
         return items;
-      case 'done':
+      case 'Done':
         return items.filter(item => item.done);
-      case 'active':
+      case 'Active':
         return items.filter(item => !item.done);
       default:
         return items;
@@ -140,7 +136,8 @@ export default class App extends Component {
           <SearchPanel 
             onSearchChange = { this.onSearchChange }/>
           <StatusFilter 
-            onFilterChange = { this.onFilterChange }/>
+            onFilterChange = { this.onFilterChange }
+            filter = { this.state.filter }/>
         </div>
         <TodoList 
           todos = { todos }
