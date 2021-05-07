@@ -7,6 +7,9 @@ import TodoAddForm from '../todo-add-form';
 import './app.css';
 
 export default class App extends Component {
+  
+  taskId = 100;
+  
   state = {
     todos: [
       { id: 1, text: "Learn React", done: false, important: false},
@@ -21,7 +24,7 @@ export default class App extends Component {
   addNewTask = (task) => {
     this.setState(({todos}) => {
     const newTask = {
-        id: todos[todos.length - 1].id + 1,
+        id: this.taskId++,
         text: task,
         done: false,
         important: false,
